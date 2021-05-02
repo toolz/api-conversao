@@ -1,10 +1,10 @@
 swagger: "2.0"
 info:
   description: "API de conversão de temperatura"
-  version: "1.0.0"
+  version: "1.1.0"
   title: "Conversão de temperatura"
   contact:
-    email: "fabricio@veronez.dev"
+    email: "helder.barros@gmail.com"
 paths:
   /fahrenheit/{valor}/celsius:
     get:
@@ -48,6 +48,26 @@ paths:
               "
         "400":
           description: "Bad Input Parameter"
+  /celsius/{valor}/qualidade:
+    get:
+      description: "Devolve a qualidade de vida para a temperatura em Celsius"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "valor"
+        in: "path"
+        description: "Valor que será analisado"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "Resultado da conversão"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/QualidadeTemperatura"
+        "400":
+          description: "Bad Input Parameter"
 
 definitions:
   Temperatura:
@@ -58,3 +78,15 @@ definitions:
       valor:
         type: "number"
         example: 500.0
+  QualidadeTemperatura:
+    type: "object"
+    required:
+    - "celsius"
+    - "qualidade"
+    properties:
+      celsius:
+        type: "number"
+        example: 500.0
+      qualidade:
+        type: "string"
+        example: "Normal"
