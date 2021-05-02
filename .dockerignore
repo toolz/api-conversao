@@ -1,0 +1,9 @@
+# git
+.git/*
+.gitgnore
+
+# módulos node
+node_modules/*
+
+# scripts shell Windows
+*.cmd

@@ -103,5 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-# scripts windows
+# scripts shell windows
 *.cmd
