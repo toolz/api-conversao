@@ -21,6 +21,35 @@ app.get('/celsius/:valor/fahrenheit', (req, res) => {
     res.json({ "fahrenheit": fahrenheit, "maquina": os.hostname() });
 });
 
+app.get('/celsius/:valor/qualidade', (req, res) => {
+
+    let valor = req.params.valor;
+	let qualidade = "";
+    
+	if (valor >= 30)
+	{
+		qualidade = "Hot!!";
+	}
+	else if (valor >= 20)
+	{
+		qualidade = "Está booom!";
+	}
+	else if (valor >= 13)
+	{
+		qualidade = "Normal";
+	}
+	else if (valor >= 9)
+	{
+		qualidade = "Uiiii que frio....";
+	}
+	else
+	{
+		qualidade = "Estamos em Marte?!!";
+	}
+	
+    res.json({ "celsius": valor, "qualidade": qualidade, "maquina": os.hostname() });
+});
+
 app.get('/temperatura/fahrenheitparacelsius/:valor', (req, res) => {
 
     let valor = req.params.valor;
